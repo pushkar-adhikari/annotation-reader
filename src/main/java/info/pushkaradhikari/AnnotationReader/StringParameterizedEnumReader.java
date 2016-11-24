@@ -7,6 +7,9 @@ import java.lang.reflect.Method;
 
 public class StringParameterizedEnumReader extends TypeAnnotationReader{
 	
+	private static final String RETURN_TYPE_STRING = "String";
+	private static final String DEFAULT_INHERITED_METHOD_NAME = "value";
+	
 	public StringParameterizedEnumReader(Class<? extends Annotation> annotation) {
 		super(annotation);
 	}
@@ -22,11 +25,17 @@ public class StringParameterizedEnumReader extends TypeAnnotationReader{
 					if (filter(method)) {
 						String invocationResult = (String) method.invoke(object);
 						writer.write(invocationResult);
-						writer.write(LINE_SEPERATOR);
+						writer.write("\n");
 					}
 				}
 			}
 		}
+	}
+	
+	private boolean filter(Method method) {
+		boolean name = !method.getName().contains(DEFAULT_INHERITED_METHOD_NAME);
+		boolean returnType = method.getReturnType().getSimpleName().contentEquals(RETURN_TYPE_STRING);
+		return name && returnType;
 	}
 	
 }

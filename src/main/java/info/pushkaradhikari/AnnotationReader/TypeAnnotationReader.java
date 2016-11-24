@@ -17,7 +17,7 @@ public class TypeAnnotationReader extends MasterReader{
 			Object[] enumArray = clazz.getEnumConstants();
 			for (Object object : enumArray) {
 				writer.write(object.toString());
-				writer.write(LINE_SEPERATOR);
+				writer.write("\n");
 			}
 		}
 	}
