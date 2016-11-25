@@ -1,8 +1,5 @@
 package info.pushkaradhikari.sample;
 
-import info.pushkaradhikari.Annotations.FetchValue;
-
-@FetchValue
 public enum Status {
 
 	close(0, "CLOSE"), open(1, "OPEN"), progress(2, "Progress");

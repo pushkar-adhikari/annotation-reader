@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-import info.pushkaradhikari.Annotations.FetchValue;
+//import info.pushkaradhikari.Annotations.FetchValue;
 
 public class FetchValuesReader {
 	
@@ -23,7 +23,7 @@ public class FetchValuesReader {
 	private Class<? extends Annotation> clazz;
 	
 	public FetchValuesReader() {
-		this.clazz = FetchValue.class;
+		//this.clazz = FetchValue.class;
 	}
 	
 	private void readValues(Class<?> clazz) throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {

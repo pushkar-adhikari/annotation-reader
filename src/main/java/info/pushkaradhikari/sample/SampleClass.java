@@ -1,9 +1,10 @@
 package info.pushkaradhikari.sample;
 
-import info.pushkaradhikari.AnnotationReader.MasterReader;
-import info.pushkaradhikari.AnnotationReader.StringParameterizedEnumReader;
-import info.pushkaradhikari.AnnotationReader.old.Reader;
-import info.pushkaradhikari.Annotations.FetchValue;
+import java.util.List;
+
+import info.pushkaradhikari.AnnotationReader.AnnotationReaderFactory;
+import info.pushkaradhikari.AnnotationReader.AnnotationReaderType;
+import info.pushkaradhikari.AnnotationReader.NitAnnotationReader;
 
 public class SampleClass {
 	
@@ -11,8 +12,11 @@ public class SampleClass {
 		//Reader reader = new Reader(FetchValue.class);
 		//reader.read();
 		
-		MasterReader reader = new StringParameterizedEnumReader(FetchValue.class);
-		reader.read();
+		NitAnnotationReader reader = AnnotationReaderFactory.configureReader(Deprecated.class, AnnotationReaderType.METHOD);
+		List<String> values = reader.read();
+		for (String val : values) {
+			System.out.println(val);
+		}
 	}
 	
 }

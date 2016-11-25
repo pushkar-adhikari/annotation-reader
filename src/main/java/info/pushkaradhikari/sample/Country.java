@@ -1,8 +1,5 @@
 package info.pushkaradhikari.sample;
 
-import info.pushkaradhikari.Annotations.FetchValue;
-
-@FetchValue
 public enum Country {
 
 	INDIA(0, "India"), AUSTRALIA(1, "Australia");

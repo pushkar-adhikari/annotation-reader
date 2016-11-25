@@ -4,10 +4,14 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 
-public class TypeAnnotationReader extends MasterReader{
+public class TypeAnnotationReader extends NitAnnotationReader{
 	
-	public TypeAnnotationReader(Class<? extends Annotation> annotation) {
+	protected TypeAnnotationReader(Class<? extends Annotation> annotation) {
 		super.annotation = annotation;
+	}
+	
+	protected static TypeAnnotationReader getTypeAnnotationReader(Class<? extends Annotation> annotation){
+		return new TypeAnnotationReader(annotation);
 	}
 	
 	@Override
@@ -16,10 +20,14 @@ public class TypeAnnotationReader extends MasterReader{
 		if (isAnnotationPresent(clazz)) {
 			Object[] enumArray = clazz.getEnumConstants();
 			for (Object object : enumArray) {
-				writer.write(object.toString());
-				writer.write("\n");
+				valuesList.add(object.toString());
 			}
 		}
 	}
+
+	protected boolean isAnnotationPresent(Class<?> clazz) {
+		return clazz.isAnnotationPresent(annotation);
+	}
+	 
 
 }

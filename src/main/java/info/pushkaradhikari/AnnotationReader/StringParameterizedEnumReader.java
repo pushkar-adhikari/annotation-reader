@@ -10,8 +10,12 @@ public class StringParameterizedEnumReader extends TypeAnnotationReader{
 	private static final String RETURN_TYPE_STRING = "String";
 	private static final String DEFAULT_INHERITED_METHOD_NAME = "value";
 	
-	public StringParameterizedEnumReader(Class<? extends Annotation> annotation) {
+	protected StringParameterizedEnumReader(Class<? extends Annotation> annotation) {
 		super(annotation);
+	}
+	
+	protected StringParameterizedEnumReader getStringParameterizedEnumReader(Class<? extends Annotation> annotation){
+		return (StringParameterizedEnumReader) getTypeAnnotationReader(annotation);
 	}
 
 	@Override
@@ -24,8 +28,7 @@ public class StringParameterizedEnumReader extends TypeAnnotationReader{
 				for (Method method : methods) {
 					if (filter(method)) {
 						String invocationResult = (String) method.invoke(object);
-						writer.write(invocationResult);
-						writer.write("\n");
+						valuesList.add(invocationResult);
 					}
 				}
 			}

@@ -1,8 +1,5 @@
 package info.pushkaradhikari.sample;
 
-import info.pushkaradhikari.Annotations.FetchValue;
-
-@FetchValue
 public enum Gender {
 	
 	male(0,"MALE"),

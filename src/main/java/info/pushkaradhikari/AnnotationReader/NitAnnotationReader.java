@@ -1,7 +1,6 @@
 package info.pushkaradhikari.AnnotationReader;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
@@ -12,20 +11,17 @@ import java.util.List;
 
 import info.pushkaradhikari.AnnotationReader.utils.FileModificationUtils;
 
-public abstract class MasterReader {
+public abstract class NitAnnotationReader {
 	
 	private static final String CLASSPATH_ROOT = "";
-	private static final String DEFAULT_FILE_NAME = "fetchedValue.txt";
 	
 	protected Class<? extends Annotation> annotation;
 	private FileModificationUtils fileModifier = new FileModificationUtils();
+	protected List<String> valuesList = new ArrayList<String>();
 	
-	public FileWriter writer;
-	
-	public void read() {
+	public List<String> read() {
 		List<String> classes = getClasses();
 		try {
-			writer = new FileWriter(DEFAULT_FILE_NAME);
 			for (String clazz : classes) {
 				try {
 					readValues(Class.forName(clazz));
@@ -39,10 +35,10 @@ public abstract class MasterReader {
 					e.printStackTrace();
 				}
 			}
-			writer.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return valuesList;
 	}
 	
 	private List<String> getClasses() {
@@ -71,9 +67,5 @@ public abstract class MasterReader {
 	
 	protected abstract void readValues(Class<?> clazz)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException;
-	
-	public boolean isAnnotationPresent(Class<?> classObject) {
-		return classObject.isAnnotationPresent(annotation);
-	}
 	
 }
