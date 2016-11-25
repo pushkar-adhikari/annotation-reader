@@ -11,7 +11,7 @@ import java.util.Enumeration;
 import java.util.List;
 
 //import info.pushkaradhikari.Annotations.FetchValue;
-
+@Deprecated
 public class FetchValuesReader {
 	
 	public static final String CLASS_EXTENSION = ".class";
