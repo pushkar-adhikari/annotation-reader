@@ -1,17 +1,13 @@
-package info.pushkaradhikari.AnnotationReader;
+package info.pushkaradhikari.AnnotationReader.impl;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 
-public class TypeReader extends NitAnnotationReader{
+public class TypeReader extends AbstractReader{
 	
-	protected TypeReader(Class<? extends Annotation> annotation) {
+	public TypeReader(Class<? extends Annotation> annotation) {
 		super.annotation = annotation;
-	}
-	
-	protected static TypeReader getTypeAnnotationReader(Class<? extends Annotation> annotation){
-		return new TypeReader(annotation);
 	}
 	
 	@Override

@@ -1,20 +1,16 @@
-package info.pushkaradhikari.AnnotationReader;
+package info.pushkaradhikari.AnnotationReader.impl;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class MethodReader extends NitAnnotationReader{
+public class MethodReader extends AbstractReader{
 	
-	protected MethodReader(Class<? extends Annotation> annotation) {
+	public MethodReader(Class<? extends Annotation> annotation) {
 		super.annotation = annotation;
 	}
 	
-	protected static MethodReader getMethodAnnotationReader(Class<? extends Annotation> annotation){
-		return new MethodReader(annotation);
-	}
-
 	@Override
 	protected void readValues(Class<?> clazz)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException {
