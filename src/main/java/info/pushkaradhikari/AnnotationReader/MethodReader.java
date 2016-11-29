@@ -5,14 +5,14 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class MethodAnnotationReader extends NitAnnotationReader{
+public class MethodReader extends NitAnnotationReader{
 	
-	protected MethodAnnotationReader(Class<? extends Annotation> annotation) {
+	protected MethodReader(Class<? extends Annotation> annotation) {
 		super.annotation = annotation;
 	}
 	
-	protected static MethodAnnotationReader getMethodAnnotationReader(Class<? extends Annotation> annotation){
-		return new MethodAnnotationReader(annotation);
+	protected static MethodReader getMethodAnnotationReader(Class<? extends Annotation> annotation){
+		return new MethodReader(annotation);
 	}
 
 	@Override

@@ -1,6 +1,6 @@
 package info.pushkaradhikari.AnnotationReader;
 
-public enum AnnotationReaderType {
+public enum ReaderType {
 	ANNOTATION,
 	CONSTRUCTOR,
 	FIELD,

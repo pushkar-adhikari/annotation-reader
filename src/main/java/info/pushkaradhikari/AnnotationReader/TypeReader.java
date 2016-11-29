@@ -4,14 +4,14 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 
-public class TypeAnnotationReader extends NitAnnotationReader{
+public class TypeReader extends NitAnnotationReader{
 	
-	protected TypeAnnotationReader(Class<? extends Annotation> annotation) {
+	protected TypeReader(Class<? extends Annotation> annotation) {
 		super.annotation = annotation;
 	}
 	
-	protected static TypeAnnotationReader getTypeAnnotationReader(Class<? extends Annotation> annotation){
-		return new TypeAnnotationReader(annotation);
+	protected static TypeReader getTypeAnnotationReader(Class<? extends Annotation> annotation){
+		return new TypeReader(annotation);
 	}
 	
 	@Override

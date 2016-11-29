@@ -2,29 +2,16 @@ package info.pushkaradhikari.AnnotationReader;
 
 import java.lang.annotation.Annotation;
 
+import info.pushkaradhikari.Annotations.FetchValue;
+
 public class AnnotationReaderFactory {
-	public static NitAnnotationReader configureReader(Class<? extends Annotation> annotation, AnnotationReaderType readerType){
+	
+	public static NitAnnotationReader configureReader(Class<? extends Annotation> annotation, ReaderType readerType){
 		switch(readerType){
-		case ANNOTATION:
-			throw(new UnsupportedOperationException("Not yet Implemented!"));
-		case CLASS:
-			throw(new UnsupportedOperationException("Not yet Implemented!"));
-		case CONSTRUCTOR:
-			throw(new UnsupportedOperationException("Not yet Implemented!"));
 		case ENUM:
-			return TypeAnnotationReader.getTypeAnnotationReader(annotation);
-		case FIELD:
-			throw(new UnsupportedOperationException("Not yet Implemented!"));
-		case INTERFACE:
-			throw(new UnsupportedOperationException("Not yet Implemented!"));
+			return TypeReader.getTypeAnnotationReader(annotation);
 		case METHOD:
-			return MethodAnnotationReader.getMethodAnnotationReader(annotation);
-		case PACKAGE:
-			throw(new UnsupportedOperationException("Not yet Implemented!"));
-		case PARAMETER:
-			throw(new UnsupportedOperationException("Not yet Implemented!"));
-		case VARIABLE:
-			throw(new UnsupportedOperationException("Not yet Implemented!"));
+			return MethodReader.getMethodAnnotationReader(annotation);
 		case STRING_PARAMETERIZED_ENUM:
 			return StringParameterizedEnumReader.getTypeAnnotationReader(annotation);
 		default:
@@ -32,7 +19,11 @@ public class AnnotationReaderFactory {
 		}
 	}
 	
-	public static NitAnnotationReader configureReader(String fullyQualifiedAnnotationName, AnnotationReaderType readerType){
+	public static NitAnnotationReader configureReader(){
+		return configureReader(FetchValue.class, ReaderType.STRING_PARAMETERIZED_ENUM);
+	}
+	
+	public static NitAnnotationReader configureReader(String fullyQualifiedAnnotationName, ReaderType readerType){
 		Class<? extends Annotation> annotationClass = null;
 		try {
 			annotationClass = createAnnotationClass(fullyQualifiedAnnotationName);

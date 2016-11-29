@@ -5,7 +5,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class StringParameterizedEnumReader extends TypeAnnotationReader{
+public class StringParameterizedEnumReader extends TypeReader{
 	
 	private static final String RETURN_TYPE_STRING = "String";
 	private static final String DEFAULT_INHERITED_METHOD_NAME = "value";
